@@ -1,32 +1,39 @@
-let img = document.querySelector('#image');
-const automatico = setInterval(auto,6000);
+let automatico = null; 
 
-function yellow (){
-    img.setAttribute("src" ,'img/amarelo.png' );
-}
+function changeImage(imageName) { 
+    const img = document.querySelector("#image"); 
+    img.setAttribute("src", "img/" + imageName + ".png"); 
+} 
 
-function red(){
-    img.setAttribute("src" ,'img/vermelho.png' );
-}
-function green(){
-    img.setAttribute("src" ,'img/verde.png' );
-}
-function off(){
-    clearInterval(automatico);
-    img.setAttribute("src" ,'img/desligado.png' );
-}
+function off() { 
+    if (automatico) { 
+        clearInterval(automatico); 
+    } 
+
+    changeImage("desligado"); 
+} 
+
+function red() { 
+    changeImage("vermelho"); 
+} 
+
+function green() { 
+    changeImage("verde"); 
+} 
+
+function yellow() { 
+    changeImage("amarelo"); 
+} 
+
+function auto() { 
+    automatico = setInterval(() => { 
+        setTimeout(yellow, 1000); 
+        setTimeout(green, 2000); 
+        setTimeout(red, 3000); 
+    }, 4000); 
+} 
 
 
-
-
-
-function auto(){
-    setTimeout(yellow , 1000);
-    setTimeout(green ,2000);
-    setTimeout(red, 3000);
-    
-    console.log(automatico)
-}
 
 
 
